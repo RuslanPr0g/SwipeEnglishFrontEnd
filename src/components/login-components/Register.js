@@ -10,7 +10,7 @@ class Register extends Component {
       username: '',
       email: '',
       password: '',
-      errors: {}
+      errors: null
     }
 
     this.onChange = this.onChange.bind(this)
@@ -26,15 +26,29 @@ class Register extends Component {
 
   fieldsAreSuitable(newUser){
     if(newUser.username.length === 0 || newUser.email.length === 0 || newUser.password.length === 0){
-      console.log("Some Fields Are Empty..");
+      this.setState({error: "Some Fields Are Empty.."});
+      setTimeout(()=>{this.setState({error: null})},2000);
+      this.setState({
+      username: '',
+      email: '',
+      password: ''
+      });
       return false;
     }
     if(newUser.username.length < 6){
-      console.log("Username is small (min length is 5)");
+      this.setState({error: "Username is small (min length is 5)"});
+      setTimeout(()=>{this.setState({error: null})},2000);
+      this.setState({
+      username: ''
+      });
       return false;
     }
     if(newUser.password.length < 6){
-      console.log("Password is small (min length is 5)");
+      this.setState({error: "Password is small (min length is 5)"});
+      setTimeout(()=>{this.setState({error: null})},2000);
+      this.setState({
+      password: ''
+      });
       return false;
     }
     return true;
@@ -62,10 +76,10 @@ class Register extends Component {
       register(newUser)
         .then(res => {
          this.props.history.push(`/login`)
-        console.log(res.error);
         })
         .catch(function (error) {
-          console.log(error);
+          this.setState({error: error.error});
+          setTimeout(()=>{this.setState({error: null})},2000);
         })
     }
   }
@@ -125,6 +139,8 @@ class Register extends Component {
               <div className="px-auto container">
                 <span className="mx-auto">Have An Account? <Link to="/login">Log In</Link></span>
               </div>
+              { this.state.error &&
+  <div id="error" className="alert alert-danger mt-2" role="alert"> { this.state.error }</div>}
             </form>
           </div>
         </div>

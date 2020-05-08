@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { login } from './UserFunctions'
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'
 
 class Login extends Component {
   constructor() {
@@ -9,7 +9,7 @@ class Login extends Component {
     this.state = {
       email: '',
       password: '',
-      errors: {}
+      error: null 
     }
 
     this.onChange = this.onChange.bind(this)
@@ -19,7 +19,7 @@ class Login extends Component {
 
   deleteToken() {
       localStorage.removeItem('usertoken')
-      window.location.href = '/login'
+      //window.location.href = '/login'
   }
 
   onChange(e) {
@@ -27,26 +27,35 @@ class Login extends Component {
   }
   onSubmit(e) {
     e.preventDefault()
-
+  
     const user = {
       email: this.state.email,
       password: this.state.password
     }
-
+  
     login(user)
       .then(res => {
-      if (res.error !== 'User does not exist' && res.error !== "Wrong Password") {
-        this.props.history.push(`/profile`)
+      if (res.error !== 'User does not exist' && res.error !== 'Wrong Password') {
+        this.props.history.push('/profile')
       }
       else
       {
         console.log(res.error);
+  
+        this.setState({error: res.error});
+        setTimeout(()=>{this.setState({error: null})},2000);
+  
         this.deleteToken();
       }
     })
     .catch(function (error) {
       console.log(error);
     })
+
+    this.setState({
+      email: '',
+      password: ''
+    });
   }
 
   render() {
@@ -88,6 +97,8 @@ class Login extends Component {
               <div className="px-auto container">
                 <span className="mx-auto">New Here? <Link to="/register">Sign Up</Link></span>
               </div>
+              { this.state.error &&
+  <div id="error" className="alert alert-danger mt-2" role="alert"> { this.state.error }</div>}
             </form>
           </div>
         </div>

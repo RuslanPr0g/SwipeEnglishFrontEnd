@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
+import { BrowserRouter as Router, Route } from "react-router-dom"
 import jwt_decode from 'jwt-decode'
+import list_of_words from './words/list-of-known-words'
 
 class Profile extends Component {
   constructor() {
@@ -40,6 +42,11 @@ class Profile extends Component {
             </tbody>
           </table>
         </div>
+        <Router>
+          <div className="container">
+            <Route component = {list_of_words} />
+          </div>
+        </Router>
       </div>
     )
   }
