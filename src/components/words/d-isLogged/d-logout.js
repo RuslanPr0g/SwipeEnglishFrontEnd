@@ -5,6 +5,7 @@ const Word = props => (
   <tr>
     <td>{props.word.name}</td>
     <td>{props.word.difficulty}</td>
+    <td>{props.word.speech}</td>
   </tr>
 );
 
@@ -45,6 +46,7 @@ export default class Dictionary extends Component {
             <tr>
               <th>Word</th>
               <th>Difficulty</th>
+              <th>Part Of Speech</th>
             </tr>
           </thead>
           <tbody>
