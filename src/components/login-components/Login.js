@@ -19,7 +19,7 @@ class Login extends Component {
 
   deleteToken() {
       localStorage.removeItem('usertoken')
-      //window.location.href = '/login'
+      window.location.href = '/login'
   }
 
   onChange(e) {
@@ -40,11 +40,8 @@ class Login extends Component {
       }
       else
       {
-        console.log(res.error);
-  
         this.setState({error: res.error});
         setTimeout(()=>{this.setState({error: null})},2000);
-  
         this.deleteToken();
       }
     })

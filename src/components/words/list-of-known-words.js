@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import { Link } from 'react-router-dom';
 import jwt_decode from 'jwt-decode';
 import axios from 'axios';
 
@@ -7,8 +6,7 @@ const Word = props => (
   <tr>
     <td>{props.word}</td>
     <td className="d-flex justify-content-end">
-      <button className="btn btn-outline-danger">FORGET</button>
-      {/* onClick={() => { props.deleteWord(props) }} */}
+      <button className="btn btn-outline-danger" onClick={() => { props.deleteWord(props) }}>FORGET</button>
     </td>
   </tr>
 );
@@ -20,7 +18,7 @@ export default class WordsList extends Component {
     const token = localStorage.usertoken
     const decoded = jwt_decode(token)
 
-    //this.deleteWord = this.deleteWord.bind(this)
+    this.deleteWord = this.deleteWord.bind(this)
 
     this.state = {id: decoded._id, words: []}
 }
@@ -35,18 +33,18 @@ export default class WordsList extends Component {
       })
   }
 
-  // deleteWord(id) {
-  //   // axios.delete('http://localhost:5000/delete-word/' + this.state.id)
-  //   //   .then(response => { console.log(response.data)});
+  deleteWord(props) {
+    axios
+    .delete('http://localhost:5000/users/delete-word/' + this.state.id, { data: { word: props.word }} )
+    .then(function(response) {console.log(response.data)})
 
-  //   // this.setState({
-  //   //   words: this.state.words.filter(el => el !== )
-  //   // })
-  // }
+    this.setState({
+      words: this.state.words.filter(el => el !== props.word)
+    })
+  }
 
   WordsList() {
-    return this.state.words.map(currentWord => <Word word={currentWord} key={currentWord} />) // deleteWord={this.deleteWord}
-    //return this.state.words
+    return this.state.words.map(currentWord => <Word word={currentWord} deleteWord={this.deleteWord} key={currentWord} />)
   }
 
   render() {
