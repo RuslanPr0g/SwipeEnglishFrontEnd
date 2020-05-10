@@ -7,11 +7,9 @@ export default class Dictionary extends Component {
   render() {
     return (
       <div>
-        *        научиться делать подгрузку (ну или страницами сделать)
         <Router>
           <div className="container">
-          {/* {localStorage.usertoken ? <Route component = {d_login} /> : <Route component = {d_logout} />} */}
-          <Route component = {d_logout} />
+          {localStorage.usertoken ? <Route component = {d_login} /> : <Route component = {d_logout} />}
           </div>
         </Router>
       </div>

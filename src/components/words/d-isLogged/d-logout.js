@@ -36,11 +36,15 @@ export default class Dictionary extends Component {
       return c;
   }
 
+  pushToRegister(){
+    window.location.href = '/register'
+  }
+
   render() {
     return (
       <div>
         <h3 className="d-flex justify-content-center display-4">Dictionary Of Swipe English!</h3>
-        <p className="blockquote-footer">Quantity Of Words: { this.numberOfWords() }</p>
+        <p className="blockquote-footer">Quantity Of Words: { 11982 /*this.numberOfWords()*/ }</p>
         <table className="table">
           <thead className="table table-dark">
             <tr>
@@ -50,9 +54,11 @@ export default class Dictionary extends Component {
             </tr>
           </thead>
           <tbody>
-            { this.wordsList() }
+            { this.wordsList().slice(0, 11) }
           </tbody>
         </table>
+        <div className="container d-flex justify-content-center mb-5">
+          <button onClick={this.pushToRegister.bind(this)} className="font-weight-bold btn btn-outline-info">Sign Up</button></div> 
       </div>
     )
   }

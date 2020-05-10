@@ -5,6 +5,7 @@ const Word = props => (
   <tr>
     <td>{props.word.name}</td>
     <td>{props.word.difficulty}</td>
+    <td>{props.word.speech}</td>
   </tr>
 );
 
@@ -39,12 +40,13 @@ export default class Dictionary extends Component {
     return (
       <div>
         <h3 className="d-flex justify-content-center display-4">Dictionary Of Swipe English!</h3>
-        <p className="blockquote-footer">Quantity Of Words: { this.numberOfWords() }</p>
+        <p className="blockquote-footer">Quantity Of Words: {this.numberOfWords() }</p>
         <table className="table">
           <thead className="table table-dark">
             <tr>
               <th>Word</th>
               <th>Difficulty</th>
+              <th>Part Of Speech</th>
             </tr>
           </thead>
           <tbody>

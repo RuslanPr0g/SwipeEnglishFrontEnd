@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import CardWord from './swipe-card-components/Main'
 
 class Landing extends Component {
   render() {
@@ -9,6 +10,7 @@ class Landing extends Component {
             <h1 className="text-center display-3">WELCOME</h1>
           </div>
         </div>
+        {localStorage.usertoken ? <CardWord></CardWord> : null}
       </div>
     )
   }

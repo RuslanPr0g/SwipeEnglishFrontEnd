@@ -25,6 +25,8 @@ function App() {
         <Route exact path="/register" component={Register} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/profile" component={Profile} />
+        <br/><br/>
+        Made By <strong>Rudenko Ruslan @Student</strong>
       </div>
     </Router>
   );

@@ -13,14 +13,14 @@ class Landing extends Component {
     render() {
         const loginRegLink = (
           <ul className="nav navbar-nav navbar-right">
-          <li> <Link to="/login" className="nav-link">Log In</Link></li>
+          <li> <Link to="/login" className="nav-link text-success">Log In</Link></li>
           </ul>
           )
       
           const userLink = (
           <ul className="nav navbar-nav navbar-right">
           <li> <Link to="/profile" className="nav-link">Profile</Link></li>
-          <li> <a href="/" onClick={this.logOut.bind(this)} className="nav-link">Log Out</a></li>
+          <li> <a href="/" onClick={this.logOut.bind(this)} className="nav-link text-danger">Log Out</a></li>
           </ul>
           )
           
