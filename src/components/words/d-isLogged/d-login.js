@@ -3,9 +3,11 @@ import axios from 'axios';
 
 const Word = props => (
   <tr>
-    <td>{props.word.name}</td>
-    <td>{props.word.difficulty}</td>
-    <td>{props.word.speech}</td>
+    <td>{props.word.word}</td>
+    <td>{props.word.definition}</td>
+    <td>{props.word.partOfSpeech}</td>
+    <td>{props.word.synonyms}</td>
+    <td>{props.word.typeOf}</td>
   </tr>
 );
 
@@ -43,10 +45,12 @@ export default class Dictionary extends Component {
         <p className="blockquote-footer">Quantity Of Words: {this.numberOfWords() }</p>
         <table className="table">
           <thead className="table table-dark">
-            <tr>
+          <tr>
               <th>Word</th>
-              <th>Difficulty</th>
+              <th>Definition</th>
               <th>Part Of Speech</th>
+              <th>Synonyms</th>
+              <th>Type Of</th>
             </tr>
           </thead>
           <tbody>
