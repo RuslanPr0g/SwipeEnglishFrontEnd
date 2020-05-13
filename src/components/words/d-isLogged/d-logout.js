@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import './css/main.css';
 
 const Word = props => (
-  <tr>
-    <td>{props.word.word}</td>
-    <td>{props.word.definition}</td>
-    <td>{props.word.partOfSpeech}</td>
-    <td>{props.word.synonyms}</td>
-    <td>{props.word.typeOf}</td>
+  <tr className="row100">
+    <td className="column100 column1" data-column="column1">{props.word.word}</td>
+    { }
+    <td className="column100 column2" data-column="column2">{props.word.definition}</td>
+    <td className="column100 column3" data-column="column3">{props.word.partOfSpeech}</td>
+    <td className="column100 column4" data-column="column4">{props.word.synonyms.join(', ')}</td>
+    <td className="column100 column5" data-column="column5">{props.word.typeOf.join(', ')}</td>
   </tr>
 );
 
@@ -19,7 +21,7 @@ export default class Dictionary extends Component {
 }
 
   componentDidMount() {
-    axios.get('http://localhost:5000/words/')
+    axios.get('http://localhost:5000/words/paginate')
       .then(response => {
         this.setState({ words: response.data })
       })
@@ -46,15 +48,15 @@ export default class Dictionary extends Component {
     return (
       <div>
         <h3 className="d-flex justify-content-center display-4">Dictionary Of Swipe English!</h3>
-        <p className="blockquote-footer">Quantity Of Words: { 11982 /*this.numberOfWords()*/ }</p>
-        <table className="table">
+        <p className="blockquote-footer">Quantity Of Words: { 119224 }</p>
+        <table className="table content-table">
           <thead className="table table-dark">
-            <tr>
-              <th>Word</th>
-              <th>Definition</th>
-              <th>Part Of Speech</th>
-              <th>Synonyms</th>
-              <th>Type Of</th>
+            <tr className="tr-main">
+              <th className="th">Word</th>
+              <th className="th">Definition</th>
+              <th className="th">Part Of Speech</th>
+              <th className="th">Synonyms</th>
+              <th className="th">Type Of</th>
             </tr>
           </thead>
           <tbody>
