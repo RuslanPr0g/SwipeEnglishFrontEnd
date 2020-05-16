@@ -20,7 +20,7 @@
   }
   
     componentDidMount() {
-      axios.get('http://localhost:5000/words/')
+      axios.get('/words/')
         .then(response => {
           this.setState({ words: response.data })
         })

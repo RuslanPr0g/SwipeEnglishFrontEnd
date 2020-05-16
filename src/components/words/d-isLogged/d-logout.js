@@ -21,7 +21,7 @@ export default class Dictionary extends Component {
 }
 
   componentDidMount() {
-    axios.get('http://localhost:5000/words/paginate')
+    axios.get('/words/paginate')
       .then(response => {
         this.setState({ words: response.data })
       })

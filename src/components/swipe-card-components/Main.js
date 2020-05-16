@@ -26,7 +26,7 @@ class CardSwiper extends Component {
 
     addWord() {
         axios
-            .post('http://localhost:5000/users/add-word/' + this.state.user._id, { data: { word: this.state.random_word }} )
+            .post('/users/add-word/' + this.state.user._id, { data: { word: this.state.random_word }} )
             .then(function(response) {console.log(response.data)})
         this.generateRandomWord();
       }
@@ -42,7 +42,7 @@ class CardSwiper extends Component {
 
     generateRandomWord(){
         this.setState({countWords: 0})
-        axios.get('http://localhost:5000/r-word/')
+        axios.get('/r-word/')
         .then(response => {
           if(response.data[0].definition)
           this.setState({ random_word: response.data[0].word, definition: response.data[0].definition})

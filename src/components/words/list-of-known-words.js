@@ -24,7 +24,7 @@ export default class WordsList extends Component {
 }
 
   componentDidMount() { 
-    axios.get('http://localhost:5000/users/get-words/' + this.state.id)
+    axios.get('/users/get-words/' + this.state.id)
       .then(response => {
         this.setState({ words: response.data })
       })
@@ -35,7 +35,7 @@ export default class WordsList extends Component {
 
   deleteWord(props) {
     axios
-    .delete('http://localhost:5000/users/delete-word/' + this.state.id, { data: { word: props.word }} )
+    .delete('/users/delete-word/' + this.state.id, { data: { word: props.word }} )
     .then(function(response) {console.log(response.data)})
 
     this.setState({
