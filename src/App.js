@@ -17,6 +17,7 @@ function App() {
     <Router>
       <div className="container">
         <Navbar />
+        BETA*
         <br/>
         <Route path="/" exact component = {Landing} />
         <Route path="/edit/:id" component = {EditExercise} />
